@@ -1,1 +1,256 @@
-# chatbot-webseite
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Chatbot</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #3b5d8f;
+    }
+
+    /* ---------- NAVIGATION ---------- */
+    .navbar {
+      background: #ffffff;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      padding: 16px 40px;
+      display: flex;
+      gap: 30px;
+    }
+
+    .navbar a {
+      text-decoration: none;
+      color: #4a5568;
+      font-weight: bold;
+    }
+
+    .navbar a.active {
+      color: #5a67d8;
+      border-bottom: 3px solid #5a67d8;
+      padding-bottom: 4px;
+    }
+
+    /* ---------- LAYOUT ---------- */
+    .page {
+      display: flex;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 40px;
+      gap: 40px;
+    }
+
+    /* ---------- CONTENT ---------- */
+    .content {
+      flex: 1;
+      background: white;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    }
+
+    .content h1 {
+      margin-top: 0;
+      font-size: 32px;
+      color: #2d3748;
+    }
+
+    .content h2 {
+      margin-top: 40px;
+      color: #2d3748;
+    }
+
+    .content p {
+      font-size: 16px;
+      line-height: 1.7;
+      color: #4a5568;
+      white-space: pre-line;
+    }
+
+    .content ul {
+      margin-top: 20px;
+      padding-left: 20px;
+      color: #4a5568;
+      line-height: 1.7;
+    }
+
+    /* ---------- CHAT ---------- */
+    .chat-container {
+      width: 420px;
+      height: calc(100vh - 160px);
+      position: sticky;
+      top: 120px;
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .chat-header {
+      padding: 16px;
+      background: #5a67d8;
+      color: white;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    #chat {
+      flex: 1;
+      padding: 16px;
+      background: #fdfdfd;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      overflow-y: auto;
+    }
+
+    .bubble {
+      max-width: 80%;
+      padding: 10px 14px;
+      border-radius: 14px;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    .user {
+      align-self: flex-end;
+      background: #5a67d8;
+      color: white;
+      border-bottom-right-radius: 4px;
+    }
+
+    .bot {
+      align-self: flex-start;
+      background: #e2e8f0;
+      color: #2d3748;
+      border-bottom-left-radius: 4px;
+    }
+
+    .thinking {
+      font-style: italic;
+      opacity: 0.7;
+      animation: blink 1.4s infinite;
+    }
+
+    @keyframes blink {
+      0% { opacity: 0.3; }
+      50% { opacity: 1; }
+      100% { opacity: 0.3; }
+    }
+
+    .chat-input {
+      display: flex;
+      padding: 12px;
+      border-top: 1px solid #ddd;
+    }
+
+    #input {
+      flex: 1;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      margin-left: 10px;
+      padding: 10px 16px;
+      background: #5a67d8;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav class="navbar">
+    <a href="Chatbotv5.html" class="active">Chatbot v5</a>
+    <a href="wissen-ernaehrung.html">Wissen Ernährung</a>
+    <a href="Chatbot.html">Chatbot</a>
+  </nav>
+
+  <div class="page">
+
+    <!-- CONTENT -->
+    <div class="content">
+      <h1>Ein Gedicht über die Verbreitung von Wahrheit</h1>
+      <p>
+Wahrheit beginnt oft leise, kaum gehört,  
+ein Flüstern, das den Alltag leicht verstört.  
+Sie reist von Mund zu Ohr, von Herz zu Herz,  
+trägt Hoffnung mit sich – manchmal auch den Schmerz.
+
+Sie braucht Mut, um das Licht zu erblicken,  
+braucht Menschen, die nicht wegsehen, nicht nicken.  
+Denn Wahrheit wächst dort, wo Fragen bestehen,  
+wo Zweifel erlaubt sind und Denken darf gehen.
+
+Sie ist kein Besitz, kein starres Gut,  
+sie lebt von Austausch, von ehrlichem Mut.  
+Und wenn sie sich verbreitet, klar und frei,  
+wird aus einem Gedanken ein Wir, ein „Dabei“.
+      </p>
+
+      <h2>Hintergrund zum verwendeten Sprachmodell</h2>
+      <ul>
+        <li><strong>Dolphin-Llama3</strong> ist ein auf Llama 3 basierendes Large Language Model, das gezielt auf offene, direkte und natürliche Dialoge optimiert wurde.</li>
+        <li>Das Modell wurde mit einem sehr großen Korpus aus <strong>mehreren Millionen Büchern, Artikeln und technischen Texten</strong> trainiert, um ein breites Allgemein- und Fachwissen abzudecken.</li>
+        <li>Ein <strong>offline gehostetes, nicht zensiertes LLM</strong> bietet maximale Datenhoheit, hohe Privatsphäre, keine Abhängigkeit von Cloud-Anbietern und erlaubt freiere, unverfälschte Antworten.</li>
+      </ul>
+    </div>
+
+    <div class="chat-container">
+      <div class="chat-header">💬 Chatbot (english)</div>
+      <div id="chat"></div>
+
+      <div class="chat-input">
+        <input id="input" placeholder="Nachricht eingeben">
+        <button onclick="send()">Senden</button>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    async function send() {
+      const input = document.getElementById("input");
+      const chat = document.getElementById("chat");
+      if (!input.value.trim()) return;
+
+      const userBubble = document.createElement("div");
+      userBubble.className = "bubble user";
+      userBubble.textContent = input.value;
+      chat.appendChild(userBubble);
+
+      const thinkingBubble = document.createElement("div");
+      thinkingBubble.className = "bubble bot thinking";
+      thinkingBubble.textContent = "Bot denkt …";
+      chat.appendChild(thinkingBubble);
+
+      const res = await fetch("http://localhost:3001/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: input.value })
+      });
+
+      const data = await res.json();
+      thinkingBubble.remove();
+
+      const botBubble = document.createElement("div");
+      botBubble.className = "bubble bot";
+      botBubble.textContent = data.reply;
+      chat.appendChild(botBubble);
+
+      input.value = "";
+      chat.scrollTop = chat.scrollHeight;
+    }
+  </script>
+
+</body>
+</html>
